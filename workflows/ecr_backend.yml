@@ -1,0 +1,47 @@
+name: ECR / Backend
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build_and_push:
+    name: "Build backend image from git tag"
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: "Build Backend Docker Container"
+        env:
+          SOURCE_TAG: ${{ github.ref_name }}
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+
+        run: |
+
+          # the name of the ECR repository I am using is called `backend`
+          BACKEND_IMAGE_URI=${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/backend
+
+          docker build \
+            --build-arg SOURCE_TAG=$SOURCE_TAG \
+            --target prod \
+            -t $BACKEND_IMAGE_URI:$SOURCE_TAG \
+            ./backend
+
+          docker push $BACKEND_IMAGE_URI:$SOURCE_TAG
