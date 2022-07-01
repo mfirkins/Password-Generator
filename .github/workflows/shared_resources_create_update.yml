@@ -47,7 +47,7 @@ jobs:
         run: |
           # set the terraform workspace
           export TF_WORKSPACE=$WORKSPACE
-          export VAR_FILE=envs-config/${TF_WORKSPACE}.tfvars
+          export VAR_FILE=env-configs/${TF_WORKSPACE}.tfvars
 
           terraform -chdir=terraform/dev-envs/shared-resources \
             init \

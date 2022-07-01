@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       workspace:
-        description: 'Terraform workspace for shared resources env'
+        description: "Terraform workspace for shared resources env"
         required: true
-        default: 'dev'
+        default: "dev"
         type: string
 
 jobs:
@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.1.7
@@ -49,7 +48,7 @@ jobs:
         run: |
           # set the terraform workspace
           export TF_WORKSPACE=$WORKSPACE
-          export VAR_FILE=envs/${TF_WORKSPACE}.tfvars
+          export VAR_FILE=env-configs/${TF_WORKSPACE}.tfvars
 
           terraform -chdir=terraform/live/shared-resources \
             init \
