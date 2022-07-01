@@ -46,6 +46,9 @@ jobs:
 
         run: |
           # set the terraform workspace
+          # create the workspace if it doesn't exist already
+          terraform workspace create ${WORKSPACE} || echo "Workspace ${WORKSPACE} already exists or cannot be created"
+          # set the TF_WORKSPACE environment variable
           export TF_WORKSPACE=$WORKSPACE
           export VAR_FILE=env-configs/${TF_WORKSPACE}.tfvars
 

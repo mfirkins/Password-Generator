@@ -1,3 +1,3 @@
 region           = "eu-west-2"
 profile          = "default"
-environment_name = "careapp-backend-terraform"
+environment_name = "pa-be-tf"
