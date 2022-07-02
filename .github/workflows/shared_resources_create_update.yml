@@ -45,7 +45,7 @@ jobs:
           TF_VAR_key_name: ${{ secrets.KEY_NAME }}
 
         run: |
-          export VAR_FILE=env-configs/${TF_WORKSPACE}.tfvars
+          export VAR_FILE=env-configs/${WORKSPACE}.tfvars
           terraform -chdir=terraform/dev-envs/shared-resources \
             init \
             -backend-config="bucket=${TF_BACKEND_BUCKET}" \
