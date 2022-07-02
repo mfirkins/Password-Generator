@@ -30,4 +30,5 @@ module "main" {
   version         = "0.8.0"
   certificate_arn = var.certificate_arn
   key_name        = var.key_name
+  azs             = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
 }
