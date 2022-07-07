@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.20.1"
+      version = "4.21.0"
     }
   }
 }
@@ -47,7 +47,7 @@ resource "aws_dynamodb_table" "this" {
 }
 
 resource "aws_ecr_repository" "backend" {
-  name                 = "careapp-backend"
+  name                 = "jool-dev-backend"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
