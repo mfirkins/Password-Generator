@@ -108,7 +108,7 @@ jobs:
         run: |
 
           # set the relative path of the .tfvars file corresponding to the workspace
-          export VAR_FILE=individual-resources/environment-configs/${WORKSPACE}.tfvars
+          export VAR_FILE=environment-configs/${WORKSPACE}.tfvars
 
           # init
           terraform -chdir=terraform/dev-envs/individual-resources \
