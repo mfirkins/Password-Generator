@@ -111,7 +111,7 @@ jobs:
           export VAR_FILE=individual-resources/environment-configs/${WORKSPACE}.tfvars
 
           # init
-          terraform -chdir=terraform/dev-envs \
+          terraform -chdir=terraform/dev-envs/individual-resources/individual-resources \
             init \
             -input=false \
             -backend-config="bucket=${TF_BACKEND_BUCKET}" \
@@ -127,19 +127,19 @@ jobs:
           export TF_WORKSPACE=$WORKSPACE
 
           # plan
-          terraform -chdir=terraform/dev-envs \
+          terraform -chdir=terraform/dev-envs/individual-resources \
             plan \
             -no-color \
             -var-file=$VAR_FILE
 
           # apply
-          terraform -chdir=terraform/dev-envs \
+          terraform -chdir=terraform/dev-envs/individual-resources \
             apply \
             -auto-approve \
             -var-file=$VAR_FILE
 
           # output
-          terraform -chdir=terraform/dev-envs \
+          terraform -chdir=terraform/dev-envs/individual-resources \
             output \
             -json > terraform_outputs.json
 
