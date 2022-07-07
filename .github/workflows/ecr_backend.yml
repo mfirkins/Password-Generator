@@ -34,7 +34,7 @@ jobs:
         run: |
 
           # the name of the ECR repository I am using is called `backend`
-          BACKEND_IMAGE_URI=${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/backend
+          BACKEND_IMAGE_URI=${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com/jool-dev-images
 
           docker build \
             --build-arg SOURCE_TAG=$SOURCE_TAG \
