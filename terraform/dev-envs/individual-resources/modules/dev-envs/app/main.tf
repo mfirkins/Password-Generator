@@ -16,25 +16,6 @@ module "s3" {
   force_destroy = var.force_destroy
 }
 
-###############################################################################
-# Redis
-###############################################################################
-
-module "redis" {
-  source                         = "../../internal/redis"
-  name                           = "redis"
-  vpc_id                         = var.vpc_id
-  task_role_arn                  = var.task_role_arn
-  execution_role_arn             = var.execution_role_arn
-  private_subnets                = var.private_subnets
-  ecs_cluster_id                 = module.ecs.cluster_id
-  ecs_sg_id                      = var.ecs_sg_id
-  service_discovery_namespace_id = var.service_discovery_namespace_id
-  log_group_name                 = "/ecs/${terraform.workspace}/redis"
-  log_stream_prefix              = "redis"
-  image                          = "redis:5.0.3-alpine"
-  region                         = var.region
-}
 
 ###############################################################################
 # Route 53

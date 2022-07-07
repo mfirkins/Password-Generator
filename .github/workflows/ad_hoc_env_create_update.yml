@@ -111,7 +111,7 @@ jobs:
           export VAR_FILE=individual-resources/environment-configs/${WORKSPACE}.tfvars
 
           # init
-          terraform -chdir=terraform/dev-envs/individual-resources/individual-resources \
+          terraform -chdir=terraform/dev-envs/individual-resources \
             init \
             -input=false \
             -backend-config="bucket=${TF_BACKEND_BUCKET}" \
