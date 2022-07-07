@@ -4,21 +4,20 @@ name: Ad Hoc Env / CREATE or UPDATE
 on:
   workflow_dispatch:
     inputs:
-
       # The Terraform workspace for the shared resources Terraform configuration
       # that the ad hoc environment will use.
       # This input typically will not be used since all ad hoc environments should use one set of shared resources
       # This may be changed if major changes to the shared resources configuration are made to avoid disrupting existing ad hoc environments
       shared_resources_workspace:
-        description: 'Terraform workspace for shared resources env'
+        description: "Terraform workspace for shared resources env"
         required: true
-        default: 'dev'
+        default: "dev"
         type: string
 
       workspace:
-        description: 'Terraform workspace for the ad hoc env'
+        description: "Terraform workspace for the ad hoc env"
         required: true
-        default: 'dev'
+        default: "dev"
         type: string
 
 jobs:
@@ -113,7 +112,7 @@ jobs:
           export VAR_FILE=envs/${WORKSPACE}.tfvars
 
           # init
-          terraform -chdir=terraform/live/ad-hoc \
+          terraform -chdir=terraform/dev-envs \
             init \
             -input=false \
             -backend-config="bucket=${TF_BACKEND_BUCKET}" \
@@ -129,19 +128,19 @@ jobs:
           export TF_WORKSPACE=$WORKSPACE
 
           # plan
-          terraform -chdir=terraform/live/ad-hoc \
+          terraform -chdir=terraform/dev-envs \
             plan \
             -no-color \
             -var-file=$VAR_FILE
 
           # apply
-          terraform -chdir=terraform/live/ad-hoc \
+          terraform -chdir=terraform/dev-envs \
             apply \
             -auto-approve \
             -var-file=$VAR_FILE
 
           # output
-          terraform -chdir=terraform/live/ad-hoc \
+          terraform -chdir=terraform/dev-envs \
             output \
             -json > terraform_outputs.json
 
