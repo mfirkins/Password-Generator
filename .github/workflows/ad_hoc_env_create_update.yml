@@ -100,8 +100,7 @@ jobs:
           TF_VAR_s3_bucket: ${{ secrets.TF_BACKEND_BUCKET }}
 
           # ECR variables
-          TF_VAR_ecr_be_repo_url: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/backend
-          TF_VAR_ecr_fe_repo_url: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/frontend
+          TF_VAR_ecr_be_repo_url: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-2.amazonaws.com/jool-dev-images
 
           # Route 53 variables
           TF_VAR_domain_name: ${{ secrets.DOMAIN_NAME }}
