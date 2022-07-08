@@ -1,4 +1,4 @@
-FROM python:3.9.9 as base
+FROM python:3.9.0-slim-buster as base
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -17,6 +17,10 @@ USER app
 
 FROM base AS prod
 
+EXPOSE 8000
+
 COPY . /code
 RUN chown -R app:app /code
 USER app
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
