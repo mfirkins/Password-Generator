@@ -17,10 +17,6 @@ USER app
 
 FROM base AS prod
 
-EXPOSE 8000
-
 COPY . /code
 RUN chown -R app:app /code
 USER app
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

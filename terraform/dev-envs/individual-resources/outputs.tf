@@ -1,5 +1,5 @@
 output "migrate_command" {
-  value       = "python manage.py migrate"
+  value       = "cd backend && python manage.py migrate"
   description = "Command for running database migrations use run-task"
 }
 
