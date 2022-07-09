@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 import random
 
@@ -29,3 +30,7 @@ def password(request):
         genresult += random.choice(characters)
 
     return render(request, "generator/password.html", {"password": genresult})
+
+
+def health_check(request):
+    return JsonResponse({"message": "OK"})
