@@ -137,7 +137,7 @@ variable "django_settings_module" {
 
 variable "api_command" {
   description = "Command used to start backend API container"
-  default     = ["gunicorn", "-t", "1000", "-b", "0.0.0.0:8000", "--log-level", "info", "backend.wsgi"]
+  default     = ["gunicorn", "-t", "1000", "-b", "0.0.0.0:8000", "--log-level", "info", "password_generator.wsgi"]
   type        = list(string)
 }
 
