@@ -4,17 +4,16 @@ name: Ad Hoc Env / DESTROY
 on:
   workflow_dispatch:
     inputs:
-
       shared_resources_workspace:
-        description: 'Terraform workspace for shared resources env'
+        description: "Terraform workspace for shared resources env"
         required: true
-        default: 'dev'
+        default: "dev"
         type: string
 
       workspace:
-        description: 'Terraform workspace for ad hoc env to destroy'
+        description: "Terraform workspace for ad hoc env to destroy"
         required: true
-        default: 'dev'
+        default: "dev"
         type: string
 
 jobs:
@@ -24,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.1.7
@@ -68,7 +66,7 @@ jobs:
 
         run: |
 
-          terraform -chdir=terraform/live/ad-hoc \
+          terraform -chdir=terraform/dev-envs/individual-resources \
             init \
             -input=false \
             -backend-config="bucket=${TF_BACKEND_BUCKET}" \
@@ -83,4 +81,4 @@ jobs:
           # set the terraform workspace
           export TF_WORKSPACE=$WORKSPACE
 
-          terraform -chdir=terraform/live/ad-hoc destroy -auto-approve
+          terraform -chdir=terraform/dev-envs/individual-resources destroy -auto-approve
