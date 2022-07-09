@@ -59,7 +59,7 @@ MIDDLEWARE = [
     "apps.core.middleware.RequestLogMiddleware",
 ]
 
-ROOT_URLCONF = "backend.urls"
+ROOT_URLCONF = "password_generator.urls"
 
 TEMPLATES = [
     {
