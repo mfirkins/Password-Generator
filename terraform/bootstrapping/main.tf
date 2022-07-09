@@ -47,7 +47,7 @@ resource "aws_dynamodb_table" "this" {
 }
 
 resource "aws_ecr_repository" "backend" {
-  name                 = "jool-dev-images"
+  name                 = "password-images"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {

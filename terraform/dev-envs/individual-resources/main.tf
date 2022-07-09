@@ -62,5 +62,5 @@ module "main" {
   region                 = var.region
   domain_name            = var.domain_name
   be_image_tag           = var.be_image_tag
-  django_settings_module = "core.settings"
+  django_settings_module = "password_generator.settings"
 }

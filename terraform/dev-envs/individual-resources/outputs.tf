@@ -1,5 +1,5 @@
-output "migrate_command" {
-  value       = "cd backend && python manage.py migrate"
+output "backend_update_command" {
+  value       = module.main.backend_update_command
   description = "Command for running database migrations use run-task"
 }
 
