@@ -11,11 +11,6 @@ WORKDIR /code
 ADD requirements.txt /code/
 RUN pip3 install -r requirements.txt
 
-FROM base AS local
-ADD requirements_dev.txt /code/
-RUN pip3 install -r requirements_dev.txt
-USER app
-
 FROM base AS prod
 
 COPY . /code
