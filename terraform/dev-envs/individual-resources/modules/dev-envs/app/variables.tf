@@ -157,7 +157,7 @@ variable "api_memory" {
 
 variable "backend_update_command" {
   description = "Command used to run database migrations and collectstatic"
-  default     = ["python", "manage.py", "pre_update"]
+  default     = ["python", "manage.py", "migrate"]
   type        = list(string)
 }
 
