@@ -22,5 +22,5 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("passwordgenerated/", views.password, name="result"),
     path("about/", views.about, name="about"),
-    path("api/health-check/"),
+    path("api/health-check/", views.health_check),
 ]
